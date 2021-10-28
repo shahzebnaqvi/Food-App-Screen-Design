@@ -17,6 +17,7 @@ class Home extends StatelessWidget {
             color: Color(0xFFbdc6cf),
           ),
           decoration: InputDecoration(
+            fillColor: Colors.red,
             prefixIcon: Icon(Icons.search),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.all(
@@ -33,8 +34,8 @@ class Home extends StatelessWidget {
         ),
         actions: [
           CircleAvatar(
-            backgroundImage:
-                NetworkImage("https://www.w3schools.com/howto/img_avatar.png"),
+            backgroundImage: NetworkImage(
+                "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"),
           ),
           SizedBox(
             width: 20,
@@ -158,7 +159,10 @@ class Home extends StatelessWidget {
                     color: Colors.red,
                   ),
                   SizedBox(width: 20),
-                  Text("0.5 Km Distance"),
+                  Text(
+                    "0.5 Km Distance",
+                    style: TextStyle(color: Colors.grey[400]),
+                  ),
                 ],
               ),
               SizedBox(

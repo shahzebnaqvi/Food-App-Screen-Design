@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodapp/home.dart';
+import 'package:foodapp/shop.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      home: Shop(),
     );
   }
 }
