@@ -110,17 +110,20 @@ class Shop extends StatelessWidget {
 }
 
 Widget multiplecolorheading(String text1, text2) {
-  return Row(
-    children: [
-      Text(
-        text1,
-        style: TextStyle(color: Colors.red),
-      ),
-      Text(
-        text2,
-        style: TextStyle(color: Colors.black),
-      )
-    ],
+  return Padding(
+    padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+    child: Row(
+      children: [
+        Text(
+          text1,
+          style: TextStyle(color: Colors.red),
+        ),
+        Text(
+          text2,
+          style: TextStyle(color: Colors.black),
+        )
+      ],
+    ),
   );
 }
 
