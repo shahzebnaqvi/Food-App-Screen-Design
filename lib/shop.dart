@@ -6,31 +6,52 @@ class Shop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leading: CircleAvatar(child: Icon(Icons.apps)),
-          actions: [
-            CircleAvatar(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CircleAvatar(
+              backgroundColor: Colors.red[50],
+              child: Icon(
+                Icons.apps,
+                color: Colors.red,
+              )),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
               backgroundImage: NetworkImage(
                   "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"),
-            )
-          ],
-        ),
-        body: SingleChildScrollView(
-            child: Container(
+            ),
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
           padding: EdgeInsets.only(
             right: 10,
             left: 10,
           ),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.location_on_sharp),
-                  Text("Denpasar , IDN "),
-                  Icon(Icons.keyboard_arrow_down_rounded)
-                ],
+              Container(
+                padding: EdgeInsets.only(top: 8, bottom: 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.location_on_sharp,
+                      color: Colors.red,
+                    ),
+                    Text("Denpasar , IDN "),
+                    Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                    )
+                  ],
+                ),
               ),
               TextField(
                 style: TextStyle(
@@ -38,9 +59,11 @@ class Shop extends StatelessWidget {
                   color: Color(0xFFbdc6cf),
                 ),
                 decoration: InputDecoration(
-                  fillColor: Colors.red,
+                  fillColor: Colors.red[50],
+                  filled: true,
                   prefixIcon: Icon(Icons.search),
                   border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white, width: 0.0),
                     borderRadius: BorderRadius.all(
                       Radius.circular(40),
                     ),
@@ -53,7 +76,7 @@ class Shop extends StatelessWidget {
                   ),
                 ),
               ),
-              multiplecolorheading("Food", " Categories"),
+              multiplecolorheading("Food", " Categories", ""),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -63,16 +86,14 @@ class Shop extends StatelessWidget {
                             primary: Colors.red, shape: StadiumBorder()),
                         onPressed: () {},
                         child: Text("All foods")),
-                    category(),
-                    category(),
-                    category(),
-                    category(),
-                    category(),
-                    category(),
+                    category("Shrimp"),
+                    category("Noodies"),
+                    category("Burger"),
+                    category("Fries"),
                   ],
                 ),
               ),
-              multiplecolorheading("Favourites", " Food"),
+              multiplecolorheading("Favourites", " Food", "See more "),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -90,7 +111,7 @@ class Shop extends StatelessWidget {
                   ],
                 ),
               ),
-              multiplecolorheading("Other", " Food"),
+              multiplecolorheading("Other", " Food", "See more "),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -105,38 +126,87 @@ class Shop extends StatelessWidget {
               )
             ],
           ),
-        )));
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart_outlined),
+            label: 'Shop',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Setting',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'About',
+          ),
+        ],
+        backgroundColor: Colors.white,
+        fixedColor: Colors.red,
+      ),
+    );
   }
 }
 
-Widget multiplecolorheading(String text1, text2) {
+Widget multiplecolorheading(String text1, text2, text3) {
   return Padding(
     padding: const EdgeInsets.only(top: 8.0, bottom: 8),
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          text1,
-          style: TextStyle(color: Colors.red),
+        Row(
+          children: [
+            Text(
+              text1,
+              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              text2,
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
-        Text(
-          text2,
-          style: TextStyle(color: Colors.black),
-        )
+        Row(
+          children: [
+            Text(
+              text3,
+              style: TextStyle(color: Colors.red),
+            ),
+            Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.red,
+              size: 10,
+            )
+          ],
+        ),
       ],
     ),
   );
 }
 
-Widget category() {
-  return ElevatedButton.icon(
-    style:
-        ElevatedButton.styleFrom(primary: Colors.red, shape: StadiumBorder()),
-    onPressed: () {},
-    label: Text("All foods"),
-    icon: CircleAvatar(
-      backgroundImage: NetworkImage(
-          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmO3mYJcyqD4gK4RAQHySJ5no7JE7uexCCeQ&usqp=CAU"),
-      radius: 10,
+Widget category(text1) {
+  return Container(
+    padding: EdgeInsets.only(right: 5, left: 5),
+    child: ElevatedButton.icon(
+      style: ElevatedButton.styleFrom(
+          primary: Colors.yellow[800], shape: StadiumBorder()),
+      onPressed: () {},
+      label: Text(text1),
+      icon: CircleAvatar(
+        backgroundImage: NetworkImage(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmO3mYJcyqD4gK4RAQHySJ5no7JE7uexCCeQ&usqp=CAU"),
+        radius: 10,
+      ),
     ),
   );
 }
@@ -199,8 +269,8 @@ Widget product() {
       Stack(alignment: Alignment.topRight, children: [
         CircleAvatar(
           radius: 50,
-          backgroundImage: NetworkImage(
-              "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"),
+          backgroundImage:
+              NetworkImage("https://static.toiimg.com/photo/53110049.cms"),
         ),
         Container(
           padding: EdgeInsets.all(10),
