@@ -91,6 +91,18 @@ class Shop extends StatelessWidget {
                 ),
               ),
               multiplecolorheading("Other", " Food"),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    product1(),
+                    product1(),
+                    product1(),
+                    product1(),
+                    product1(),
+                  ],
+                ),
+              )
             ],
           ),
         )));
@@ -127,70 +139,165 @@ Widget category() {
 }
 
 Widget product() {
-  return Container(
-    color: Colors.red,
-    margin: EdgeInsets.all(3),
-    padding: EdgeInsets.only(right: 15, left: 15, top: 50, bottom: 15),
-    child: Column(
-      children: [
-        Text("Orignal Fried Thrimp"),
-        Text("Orignal Fried Thrimp"),
-        Row(
+  return Stack(
+    alignment: Alignment.topCenter,
+    children: [
+      Container(
+        decoration: BoxDecoration(
+            color: Colors.red, borderRadius: BorderRadius.circular(10)),
+        margin: EdgeInsets.only(top: 70, right: 10, left: 10),
+        padding: EdgeInsets.only(right: 15, left: 15, top: 35, bottom: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 20,
+            Text(
+              "Orignal Fried Thrimp",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold),
             ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 20,
+            Text(
+              "Homemade chief",
+              style: TextStyle(color: Colors.white, fontSize: 10),
             ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 20,
-            ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 20,
-            ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
-              size: 20,
-            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 15,
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 15,
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 15,
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 15,
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 15,
+                ),
+              ],
+            )
           ],
+        ),
+      ),
+      Stack(alignment: Alignment.topRight, children: [
+        CircleAvatar(
+          radius: 50,
+          backgroundImage: NetworkImage(
+              "https://png.pngtree.com/png-vector/20190704/ourlarge/pngtree-businessman-user-avatar-free-vector-png-image_1538405.jpg"),
+        ),
+        Container(
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            shape: BoxShape.circle,
+          ),
+          child: Text(
+            "\$6.9",
+            style: TextStyle(color: Colors.red),
+          ),
         )
-      ],
-    ),
+      ]),
+    ],
   );
 }
 
-Widget circlecontainer() {
-  return Stack(children: [
-    Container(
-      margin: EdgeInsets.all(1),
-      width: 70,
-      height: 70,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          shape: BoxShape.circle,
-          border: Border.all(color: Colors.red, width: 2),
-          image: DecorationImage(
-              colorFilter: new ColorFilter.mode(
-                  Colors.black.withOpacity(0.7), BlendMode.dstATop),
-              image: NetworkImage(
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkc6qNgjJi_rzszFB0hSv7vh0jazpZuqVgSJdPS-L43qK9JOeA-q-QBBbBhDj2hXvhkQk&usqp=CAU",
-              ))),
+Widget product1() {
+  return Stack(alignment: Alignment.topRight, children: [
+    Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(40),
+                topRight: Radius.circular(40),
+              )),
+          margin: EdgeInsets.only(top: 10, right: 10, left: 10),
+          padding: EdgeInsets.only(right: 0, left: 0, top: 0, bottom: 0),
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(8.0),
+                  topRight: Radius.circular(8.0),
+                ),
+                child: Image.network(
+                    'https://static.toiimg.com/photo/53110049.cms',
+                    // width: 300,
+                    height: 120,
+                    fit: BoxFit.fitWidth),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                      size: 15,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                      size: 15,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                      size: 15,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                      size: 15,
+                    ),
+                    Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                      size: 15,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Text(
+                  "Chees pizza",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     ),
-    CircleAvatar(
-      backgroundImage: NetworkImage(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkc6qNgjJi_rzszFB0hSv7vh0jazpZuqVgSJdPS-L43qK9JOeA-q-QBBbBhDj2hXvhkQk&usqp=CAU",
+    Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        shape: BoxShape.circle,
+      ),
+      child: Text(
+        "\$6.9",
+        style: TextStyle(color: Colors.red),
       ),
     ),
-    Text("asas")
   ]);
 }
